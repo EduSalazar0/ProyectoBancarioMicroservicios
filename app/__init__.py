@@ -9,5 +9,9 @@ def create_app():
     app.config['DB_PATH'] = config.DB_PATH
 
     init_db(app)
+    
+    # Registrar Blueprints
+    from app.routes.auth_routes import auth_bp
+    app.register_blueprint(auth_bp)
 
     return app

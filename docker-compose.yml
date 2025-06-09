@@ -6,7 +6,8 @@ services:
     ports:
       - "5000:5000"
     volumes:
-      - .:/usr/src/app
+      - ./proyecto_bancario.db:/usr/src/app/proyecto_bancario.db
     environment:
       - FLASK_ENV=development
     restart: unless-stopped
+

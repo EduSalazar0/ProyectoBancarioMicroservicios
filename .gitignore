@@ -6,6 +6,7 @@ __pycache__/
 
 # Base de datos local
 *.db
+insert_client.py
 
 # Configuración sensible
 .env
