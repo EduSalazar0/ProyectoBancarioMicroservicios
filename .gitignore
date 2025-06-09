@@ -1,0 +1,27 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Base de datos local
+*.db
+
+# Configuración sensible
+.env
+appsettings.json
+
+# macOS
+.DS_Store
+
+# IDEs
+.idea/
+.vscode/
+
+# Logs (por si luego agregamos logs)
+logs/
+*.log
+
+# Otros (por si pruebas notebooks o tmp)
+*.ipynb_checkpoints
+tmp/

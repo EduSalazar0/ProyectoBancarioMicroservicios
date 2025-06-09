@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  proyecto-bancario-microservicio:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - FLASK_ENV=development
+    restart: unless-stopped
