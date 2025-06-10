@@ -32,3 +32,30 @@ class ClientService:
         ''', (amount, client_id))
 
         db.commit()
+
+        # Registrar la transacción
+        self.record_transaction(client_id, amount, 'deposit')
+
+    def record_transaction(self, client_id, amount, type):
+        db = get_db(self.app)
+        cursor = db.cursor()
+
+        cursor.execute('''
+            INSERT INTO transactions (client_id, amount, type)
+            VALUES (?, ?, ?)
+        ''', (client_id, amount, type))
+
+        db.commit()
+
+    def get_transactions(self, client_id):
+        db = get_db(self.app)
+        cursor = db.cursor()
+
+        cursor.execute('''
+            SELECT amount, type, timestamp
+            FROM transactions
+            WHERE client_id = ?
+            ORDER BY timestamp DESC
+        ''', (client_id,))
+
+        return cursor.fetchall()

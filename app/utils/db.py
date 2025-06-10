@@ -31,5 +31,18 @@ def init_db(app):
                 FOREIGN KEY (client_id) REFERENCES clients(id)
             )
         ''')
+        
+        # Tabla de transacciones
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS transactions (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                client_id INTEGER,
+                amount REAL,
+                type TEXT,
+                timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (client_id) REFERENCES clients(id)
+            )
+        ''')
+
 
         db.commit()

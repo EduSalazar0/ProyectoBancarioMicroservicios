@@ -38,3 +38,15 @@ def client_deposit():
             flash('Por favor ingrese un monto válido.', 'error')
 
     return render_template('client_deposit.html', client_name=client_name)
+
+@client_bp.route('/client/transactions')
+def client_transactions():
+    if 'client_id' not in session:
+        return redirect(url_for('auth_bp.login'))
+
+    client_id = session.get('client_id')
+    client_name = session.get('client_name')
+
+    transactions = client_service.get_transactions(client_id)
+
+    return render_template('client_transactions.html', client_name=client_name, transactions=transactions)

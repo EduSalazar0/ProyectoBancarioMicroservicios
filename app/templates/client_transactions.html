@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Historial de Transacciones - Banco Kunumi{% endblock %}
+
+{% block content %}
+    <h2>Bienvenido {{ client_name }}</h2>
+
+    <h3>Historial de Transacciones</h3>
+
+    {% if transactions %}
+        <table border="1">
+            <tr>
+                <th>Monto</th>
+                <th>Tipo</th>
+                <th>Fecha</th>
+            </tr>
+            {% for amount, type, timestamp in transactions %}
+            <tr>
+                <td>${{ "%.2f"|format(amount) }}</td>
+                <td>{{ type }}</td>
+                <td>{{ timestamp }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No hay transacciones registradas.</p>
+    {% endif %}
+{% endblock %}

@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Home Cliente - Banco Kunumi</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %}Inicio del Cliente - Banco Kunumi{% endblock %}
+
+{% block content %}
     <h2>Bienvenido, {{ client_name }}!</h2>
 
     <p>Has iniciado sesión correctamente.</p>
-</body>
-</html>
+{% endblock %}
