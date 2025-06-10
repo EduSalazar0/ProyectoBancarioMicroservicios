@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}Cuenta de Cliente - Banco Kunumi{% endblock %}
+
+{% block content %}
+    <h2>Bienvenido {{ client_name }}</h2>
+
+    <h3>Información de Cuenta</h3>
+    <p>Saldo actual: ${{ "%.2f"|format(balance) }}</p>
+{% endblock %}

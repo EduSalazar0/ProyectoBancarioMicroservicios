@@ -24,7 +24,7 @@ def init_db(app):
 
         # Tabla de cuentas
         cursor.execute('''
-            CREATE TABLE IF NOT EXISTS account (
+            CREATE TABLE IF NOT EXISTS accounts (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 client_id INTEGER,
                 balance REAL DEFAULT 0,
