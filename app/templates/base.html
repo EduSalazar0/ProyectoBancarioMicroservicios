@@ -31,16 +31,19 @@
 </head>
 <body>
 
-    <div class="navbar">
-        <a href="{{ url_for('auth_bp.client_home') }}">Inicio</a>
-        <a href="{{ url_for('client_bp.client_account') }}">Cuenta</a>
-        <a href="{{ url_for('client_bp.client_deposit') }}">Depositar</a>
-        <a href="{{ url_for('client_bp.client_transactions') }}">Transacciones</a>
-    </div>
+    {% if session.client_id %}
+    <nav class="navbar">
+      <a href="{{ url_for('client_bp.client_account') }}">Mi cuenta</a>
+      <a href="{{ url_for('client_bp.client_deposit') }}">Depositar</a>
+      <a href="{{ url_for('client_bp.client_transactions') }}">Transacciones</a>
+      <a href="{{ url_for('auth_bp.logout') }}">Logout</a>
+    </nav>
 
-    <div class="content">
-        {% block content %}{% endblock %}
-    </div>
+  <hr>
+  {% endif %}
+
+{% block content %}{% endblock %}
+
 
 </body>
 </html>

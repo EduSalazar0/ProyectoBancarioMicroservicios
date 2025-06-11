@@ -9,5 +9,12 @@ services:
       - ./proyecto_bancario.db:/usr/src/app/proyecto_bancario.db
     environment:
       - FLASK_ENV=development
+    depends_on:
+      - rabbitmq
     restart: unless-stopped
 
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"    # puerto de RabbitMQ (AMQP)
+      - "15672:15672"  # consola web de RabbitMQ

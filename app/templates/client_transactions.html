@@ -3,26 +3,23 @@
 {% block title %}Historial de Transacciones - Banco Kunumi{% endblock %}
 
 {% block content %}
-    <h2>Bienvenido {{ client_name }}</h2>
+<h2>Historial de transacciones - {{ client_name }}</h2>
 
-    <h3>Historial de Transacciones</h3>
+<table border="1",cellpadding="8" cellspacing="0" style="width: 60%; border-collapse: collapse;">
+    <tr>
+        <th>Monto</th>
+        <th>Tipo</th>
+        <th>Fecha</th>
+    </tr>
+    {% for tx in transactions %}
+    <tr>
+        <td>${{ "%.2f"|format(tx[0]) }}</td>
+        <td>{{ tx[1] }}</td>
+        <td>{{ tx[2] }}</td>
+    </tr>
+    {% endfor %}
+</table>
 
-    {% if transactions %}
-        <table border="1">
-            <tr>
-                <th>Monto</th>
-                <th>Tipo</th>
-                <th>Fecha</th>
-            </tr>
-            {% for amount, type, timestamp in transactions %}
-            <tr>
-                <td>${{ "%.2f"|format(amount) }}</td>
-                <td>{{ type }}</td>
-                <td>{{ timestamp }}</td>
-            </tr>
-            {% endfor %}
-        </table>
-    {% else %}
-        <p>No hay transacciones registradas.</p>
-    {% endif %}
+<a href="{{ url_for('client_bp.client_account') }}">Volver a Mi cuenta</a>
+
 {% endblock %}

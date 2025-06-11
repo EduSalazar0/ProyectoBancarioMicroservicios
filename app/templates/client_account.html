@@ -6,5 +6,6 @@
     <h2>Bienvenido {{ client_name }}</h2>
 
     <h3>Información de Cuenta</h3>
-    <p>Saldo actual: ${{ "%.2f"|format(balance) }}</p>
+    <p>ID de Cliente: {{ account.client_id }}</p>
+    <p>Saldo actual: ${{ "%.2f"|format(account.balance) }}</p>
 {% endblock %}
